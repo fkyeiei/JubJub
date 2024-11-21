@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<div>ชื่อจริง<input type="text" name="fristname"></div>
+    <div>นามสกุล<input type="text" name="lastname"></div>
+        <div>อายุ<input type="text" name="age"></div>
+            <div>เพศ
+ชาย<input type="radio" name="gender" id="" value="ชาย">
+หญิง<input type="radio" name="gender" id="" value="หญิง">
+ไม่ระบุ<input type="radio" name="gender" id="" value="ไม่ระบุ"></div>
+
+<div>
+    <input type="checkbox" name="intreest" id="" value="หมา">หมา
+    <input type="checkbox" name="intreest" id="" value="แมว">แมว
+    <input type="checkbox" name="intreest" id="" value="หมู">หมู
+    <input type="checkbox" name="intreest" id="" value="วัว">วัว
+    <input type="checkbox" name="intreest" id="" value="ช้าง">ช้าง
+    <input type="checkbox" name="intreest" id="" value="งู">งู
+    <input type="checkbox" name="intreest" id="" value="ควาย">ควาย
+</div>
+<button onclick="submitdata()"> ส่งข้อมูล </button>
+<script>
+
+    function submitdata(){
+        let fristnameDom = document.querySelector('input[mane=fristname]')
+        let lastnameDom = document.querySelector('input[mane=lastname]')
+        let ageDom = document.querySelector('input[mane=age]')
+        let genderDom = document.querySelector('input[mane=gender]')
+        let intreestDom = document.querySelector('input[mane=intreest]')
+    
+        let intreest = ''
+
+        for (let i = 0 ; i <intreestDom.length ; i++){
+            intreest += intreestDom[i].value
+            if(i != intreestDom.length-1)
+                intreest +=","
+    }
+            console.log(intreest)
+
+        let usredata = {
+            fristnameDom : fristnameDom.value
+            lastnameDom : lastnameDom.value
+            ageDom : ageDom.value
+            genderDom : genderDom.value
+            intreestDomn : intreestDom.valuem
+
+            console.log(รวมมิตร)
+    }
