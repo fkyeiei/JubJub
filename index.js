@@ -37,7 +37,9 @@ app.post('/user',(req,res)=>{
 // เรียกข้อมูลออกมาโดยระบุตามไอดี
 app.get('/users/:id',(req,res)=>{
     let id = req.params.id
-    res.send(id)
+    let selecetindex = users.findIndex(user=>user.id == id)
+
+    res.json(users[selecetindex])
 })
 
 // Update ข้อมูล โดยใช้ path และ id เพื่อระบุข้อมูลที่จะแก้ 
