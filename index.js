@@ -8,6 +8,45 @@ const port = 8000
 let users = []
 let count = 1
 
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const mysql = require('mysql2/promise')
+
+// Route handler for getting all users
+app.get('/users', (req, res) => {
+  mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'yourdb'
+  }).then((conn) => {
+    // สิ่งนี้เราเรียกกันว่า promise
+    conn
+    .query('SELECT * FROM users')
+    .then((results) => {
+      res.json(results[0])
+    })
+    .catch((error) => {
+      console.error('Error fetching users:', error.message)
+      res.status(500).json({ error: 'Error fetching users' })
+    })
+  })
+})
+
+const initmySQL = async ()=>{
+    conn = await mysql Con
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'yourdb'
+
+}
+
+
+
+
+
 // path = / เรียกข้อมูลทั้งหมด
 app.get('/users',(req,res)=>{
    const fillter = users.map(user=>{
@@ -57,7 +96,7 @@ app.put('/users/:id',(req,res)=>{
     users[selecetindex].gender = updateUser.gender || users[selecetindex].gender
 
     res.json({
-        massage : 'Update user complate !!' ,
+        massage : 'Update user complete !!' ,
         data :{
             user : updateUser,
             indexUpdate : selecetindex
@@ -65,6 +104,29 @@ app.put('/users/:id',(req,res)=>{
     })
 })
 
+app.delete('/users/id',(req,res)=>{
+    let id=req.params.id
+    let selecetindex = users.findIndex(user.id == id)
+
+    user.splice(selecetindex,1)
+
+    res.jon({
+        message : "delete complete !!"
+        
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+})
 
 app.listen(port,(req,res)=>{
     console.log("https run at " + port)
